@@ -23,6 +23,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class LoginMainDesign extends AppCompatActivity implements View.OnClickListener {
 
@@ -32,6 +33,7 @@ public class LoginMainDesign extends AppCompatActivity implements View.OnClickLi
     private LinearLayout llSignin;
     private Button btnRegister;
     private Button btnSignin;
+    private FirebaseAuth.AuthStateListener authListener;
     private EditText etdEmailLogIn,etdPasswordLogin ;
     private EditText inputEmail, inputPassword;
     private Button btnLogIn, btnSignUp, btnResetPassword;
@@ -54,6 +56,17 @@ public class LoginMainDesign extends AppCompatActivity implements View.OnClickLi
 
         //////////////////////////
         auth = FirebaseAuth.getInstance();
+
+        authListener = new FirebaseAuth.AuthStateListener() {
+            @Override
+            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
+                FirebaseUser user = firebaseAuth.getCurrentUser();
+                if (user != null) {
+                    startActivity(new Intent(LoginMainDesign.this, MainActivity.class));
+                    finish();
+                }
+            }
+        };
         inputEmail = (EditText) findViewById(R.id.emailRegister);
         inputPassword = (EditText) findViewById(R.id.passwordRegister);
         /////////////////////////////
@@ -217,6 +230,19 @@ public class LoginMainDesign extends AppCompatActivity implements View.OnClickLi
             }
         });
 
+    }
+    @Override
+    public void onStart() {
+        super.onStart();
+        auth.addAuthStateListener(authListener);
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        if (authListener != null) {
+            auth.removeAuthStateListener(authListener);
+        }
     }
 
 

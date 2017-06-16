@@ -38,6 +38,7 @@ import com.example.corsatk.courses.EnglishCourses;
 import com.example.corsatk.R;
 import com.example.corsatk.view.LoginMainDesign;
 import com.example.corsatk.view.RateUs;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.squareup.picasso.Picasso;
@@ -51,7 +52,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private StorageReference mstorage;
     private ProgressDialog mprogressDialog;
     private static final int GALLERY_INTENT=2;
-
+    private FirebaseAuth auth;
     private static String PlayList_ID;
     private DrawerLayout drawerLayout;
     private Toolbar toolbar;
@@ -74,7 +75,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mstorage= FirebaseStorage.getInstance().getReference();
         mprogressDialog=new ProgressDialog(this);
 
-
+        auth = FirebaseAuth.getInstance();
 
         // to do image slider
         Hash_file_maps = new HashMap<String, String>();
@@ -214,8 +215,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         builder.setNegativeButton("ok", new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialog, int which) {
+                                        signOut();
                                         Intent intent = new Intent(MainActivity.this, LoginMainDesign.class);
                                         startActivity(intent);
+                                    finish();
                                     }
                                 }
                         );
@@ -293,7 +296,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         }
     }
-
+    public void signOut() {
+        auth.signOut();
+    }
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
