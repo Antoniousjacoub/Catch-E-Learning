@@ -160,17 +160,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         Intent intent = new Intent(MainActivity.this, ArabicCourses.class);
                         startActivity(intent);
 
-                        drawerLayout.closeDrawers();
+                     //   drawerLayout.closeDrawers();
                         break;
                     case R.id.englishCourses:
                         Toast.makeText(getApplicationContext(), "English Courses", Toast.LENGTH_SHORT).show();
                         intent = new Intent(MainActivity.this, EnglishCourses.class);
                         startActivity(intent);
-                        drawerLayout.closeDrawers();
+                        //drawerLayout.closeDrawers();
                         break;
                     case R.id.favorite:
                         Toast.makeText(getApplicationContext(), "Find courses", Toast.LENGTH_SHORT).show();
-                        drawerLayout.closeDrawers();
+                       // drawerLayout.closeDrawers();
                         break;
                     case R.id.aboutUs:
                         Toast.makeText(getApplicationContext(), "about", Toast.LENGTH_SHORT).show();
@@ -182,30 +182,30 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         //Toast.makeText(getApplicationContext(), "Please rate us", Toast.LENGTH_SHORT).show();
                         intent = new Intent(MainActivity.this, MakeHelp.class);
                         startActivity(intent);
-                        drawerLayout.closeDrawers();
+                        //drawerLayout.closeDrawers();
                         break;
                     case R.id.Showhelp:
                         //Toast.makeText(getApplicationContext(), "Please rate us", Toast.LENGTH_SHORT).show();
                         intent = new Intent(MainActivity.this, ShowHelp.class);
                         startActivity(intent);
-                        drawerLayout.closeDrawers();
+                       // drawerLayout.closeDrawers();
                         break;
                     case R.id.ratetUs:
                         Toast.makeText(getApplicationContext(), "Please rate us", Toast.LENGTH_SHORT).show();
                         intent = new Intent(MainActivity.this, RateUs.class);
                         startActivity(intent);
-                        drawerLayout.closeDrawers();
+                        //drawerLayout.closeDrawers();
                         break;
                     case R.id.chat:
                         Toast.makeText(getApplicationContext(), "Lets start chatting", Toast.LENGTH_SHORT).show();
                         intent = new Intent(MainActivity.this, ChattingNames.class);
                         startActivity(intent);
-                        drawerLayout.closeDrawers();
+                       // drawerLayout.closeDrawers();
                         break;
                     case R.id.uploadVideos:
                         intent = new Intent(MainActivity.this, UploadVideos.class);
                         startActivity(intent);
-                        drawerLayout.closeDrawers();
+                       // drawerLayout.closeDrawers();
                         break;
                     case R.id.logout:
                         AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);

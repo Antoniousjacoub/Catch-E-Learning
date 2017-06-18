@@ -33,7 +33,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="The Most Amazing Cours"
+        android:text="The Most Amazing Course"
         android:textSize="28dp"
         android:textColor="#FDB61D"
         android:layout_gravity="center"
@@ -56,6 +56,11 @@
         android:text="Really, We mean it."
         android:textSize="20dp"
         android:textColor="#000000"
+        />
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:src="@drawable/art"
         />
 </LinearLayout>
         <include
