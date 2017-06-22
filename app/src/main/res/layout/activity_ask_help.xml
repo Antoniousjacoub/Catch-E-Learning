@@ -55,7 +55,6 @@
             android:textStyle="bold"
             android:textSize="15dp"
             android:textAlignment="center"
-
             android:id="@+id/edittextphone"
             android:inputType="phone"
             />

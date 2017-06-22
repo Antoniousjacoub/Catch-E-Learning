@@ -126,6 +126,7 @@ public class ChattingNames extends AppCompatActivity {
 
                 Intent intent = new Intent(ChattingNames.this, MainActivity.class);
                 startActivity(intent);
+                finish();
 
             }
         });

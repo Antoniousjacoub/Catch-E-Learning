@@ -64,7 +64,7 @@ public class MakeHelp extends AppCompatActivity {
         });
     }
     public void  startshare(){
-        mprogress.setMessage("share ....");
+        mprogress.setMessage("Please Wait....");
         mprogress.show();
         final  String n = name.getText().toString().trim();
         final String p = phone.getText().toString().trim();
@@ -84,6 +84,8 @@ public class MakeHelp extends AppCompatActivity {
                     mprogress.dismiss();
                    Intent intent=new Intent(MakeHelp.this,ShowHelp.class);
                     startActivity(intent);
+                    Toast.makeText(MakeHelp.this,"Good Your Problem in Process ",Toast.LENGTH_LONG).show();
+                    finish();
 
                 }
             });

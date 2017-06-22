@@ -12,4 +12,6 @@
          </string>
     <string name="minimum_pass">Password is short</string>
     <string name="auth_failed">Auth Failed Try Again </string>
+    <string name="txt_under_slider">You will learn so much that your head will spin</string>
+    <string name="txt_under_slider_2">Really, We mean it.</string>
 </resources>

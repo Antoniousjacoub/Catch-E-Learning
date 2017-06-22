@@ -76,7 +76,7 @@ public class AskHelp extends AppCompatActivity {
                     }
 
     private void startshare() {
-        mprogress.setMessage("share ....");
+        mprogress.setMessage("Please Wait...");
         mprogress.show();
         final String n = name.getText().toString().trim();
         final String p = phone.getText().toString().trim();
@@ -95,7 +95,7 @@ public class AskHelp extends AppCompatActivity {
                     post.child("image").setValue(downloadUrl.toString());
                     mprogress.dismiss();
 
-
+                    finish();
 
                 }
             });
