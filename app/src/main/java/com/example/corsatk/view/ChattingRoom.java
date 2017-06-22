@@ -44,6 +44,15 @@ public class ChattingRoom extends AppCompatActivity {
         room_name = getIntent().getExtras().get("room_name").toString();
         toolbar.setTitle(" Room - "+room_name);
 
+        //implement arrow button
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // back button pressed
+                onBackPressed();
+            }
+        });
+
         root = FirebaseDatabase.getInstance().getReference().child(room_name);
 
         btn_send_msg.setOnClickListener(new View.OnClickListener() {

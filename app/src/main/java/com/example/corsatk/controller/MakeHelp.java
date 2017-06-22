@@ -5,11 +5,13 @@ import android.content.Intent;
 import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.corsatk.R;
@@ -38,14 +40,24 @@ public class MakeHelp extends AppCompatActivity {
         setContentView(R.layout.activity_make_help);
         mstorage= FirebaseStorage.getInstance().getReference();
         mdata= FirebaseDatabase.getInstance().getReference().child("help requests");
-
         name=(EditText)findViewById(R.id.edittextname);
         phone=(EditText)findViewById(R.id.edittextphone);
         problem=(EditText)findViewById(R.id.edittextproblem);
         upload=(Button) findViewById(R.id.upload);
         share=(Button) findViewById(R.id.share);
         mprogress=new ProgressDialog(this);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.app_bar);
+        TextView mTitle = (TextView) toolbar.findViewById(R.id.toolbar_title);
+        mTitle.setText("Help");
 
+        //implement arrow button
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // back button pressed
+                onBackPressed();
+            }
+        });
         imageView=(ImageView)findViewById(R.id.imageview1);
         upload.setOnClickListener(new View.OnClickListener() {
             @Override

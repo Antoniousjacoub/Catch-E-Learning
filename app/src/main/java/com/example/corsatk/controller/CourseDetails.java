@@ -27,6 +27,17 @@ public class CourseDetails extends YouTubeBaseActivity implements YouTubePlayer.
         TextView mTitle = (TextView) toolbar.findViewById(R.id.toolbar_title);
         mTitle.setText("Courses");
 
+        //implement arrow button
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // back button pressed
+                onBackPressed();
+            }
+        });
+
+
+
         Button btn_share=(Button)findViewById(R.id.shareit);
         btn_share.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {

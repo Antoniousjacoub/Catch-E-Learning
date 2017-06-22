@@ -59,6 +59,16 @@ public class ArabicCourses extends AppCompatActivity {
         TextView mTitle = (TextView) toolbar.findViewById(R.id.toolbar_title);
         mTitle.setText("Arabic Courses");
 
+        //implement arrow button
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // back button pressed
+                onBackPressed();
+            }
+        });
+
+
         gridView = (GridView) findViewById(R.id.gridviewArabic);
         gridView.setAdapter(new ImageArabicAdapter(this, mCourseName,mCourseImage));
         gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {

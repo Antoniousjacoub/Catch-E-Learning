@@ -44,6 +44,16 @@ public class ChattingNames extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.app_bar);
         TextView mTitle = (TextView) toolbar.findViewById(R.id.toolbar_title);
         mTitle.setText("Chat Subject");
+
+        //implement arrow button
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // back button pressed
+                onBackPressed();
+            }
+        });
+
         listView = (ListView) findViewById(R.id.listView);
 
         arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, list_of_rooms);

@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -35,7 +36,18 @@ public class ShowHelp extends AppCompatActivity {
         helplist= (RecyclerView) findViewById(R.id.help_list);
         helplist.setHasFixedSize(true);
         helplist.setLayoutManager(new LinearLayoutManager(this));
+        Toolbar toolbar = (Toolbar) findViewById(R.id.app_bar);
+        TextView mTitle = (TextView) toolbar.findViewById(R.id.toolbar_title);
+        mTitle.setText("Show Help");
 
+        //implement arrow button
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // back button pressed
+                onBackPressed();
+            }
+        });
 
     }
 

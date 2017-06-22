@@ -77,6 +77,15 @@ public class UploadVideos extends AppCompatActivity implements View.OnClickListe
        toolbar = (Toolbar) findViewById(R.id.app_bar);
         TextView mTitle = (TextView) toolbar.findViewById(R.id.toolbar_title);
         mTitle.setText("Send Your Link");
+        //implement arrow button
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // back button pressed
+                onBackPressed();
+            }
+        });
+
     }
     private void signIn() {
         Intent signInIntent = Auth.GoogleSignInApi.getSignInIntent(mGoogleApiClient);

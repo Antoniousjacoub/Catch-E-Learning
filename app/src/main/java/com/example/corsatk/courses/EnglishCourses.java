@@ -52,6 +52,16 @@ public class EnglishCourses extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.app_bar);
         TextView mTitle = (TextView) toolbar.findViewById(R.id.toolbar_title);
         mTitle.setText("English Courses");
+
+        //implement arrow button
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // back button pressed
+                onBackPressed();
+            }
+        });
+
         gridView = (GridView) findViewById(R.id.gridviewEnglish);
         gridView.setAdapter(new ImageEnglishAdapter(this, mCourseName,mCourseImage));
         gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {

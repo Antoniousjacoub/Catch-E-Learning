@@ -8,6 +8,7 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.TextView;
 
 import com.example.corsatk.controller.Item;
@@ -23,16 +24,24 @@ public class About extends AppCompatActivity {
     private ItemAdapter itemAdapter;
     private GridLayoutManager gridLayoutManager;
     private List<Item> items;
-    Toolbar toolbar;
+    private Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_about);
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.app_bar);
+        toolbar = (Toolbar) findViewById(R.id.app_bar);
         TextView mTitle = (TextView) toolbar.findViewById(R.id.toolbar_title);
         mTitle.setText("About");
+        //implement arrow button
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // back button pressed
+                onBackPressed();
+            }
+        });
 
         AppCompatDelegate.setCompatVectorFromResourcesEnabled(true);
 
@@ -44,11 +53,12 @@ public class About extends AppCompatActivity {
         recyclerView.setAdapter(itemAdapter);
         recyclerView.setLayoutManager(gridLayoutManager);
     }
+
     private void initItemsData() {
         items = new ArrayList<>(6);
         items.add(new Item(R.drawable.fahad, "DR.Fahad ", "Instructor", "01281214755"));
         items.add(new Item(R.drawable.farid, "DR.Farid", "Instructor", " 01222435861"));
-        items.add(new Item(R.drawable.bola, "Bola", "android developer" , "bolatalaat055@gmail.com "));
+        items.add(new Item(R.drawable.bola, "Bola", "android developer", "bolatalaat055@gmail.com "));
         items.add(new Item(R.drawable.tony, "Antonious", "android developer", "AntoniousJacoub@gmail.coom"));
         items.add(new Item(R.drawable.ahmed, "Ahmed", "graphic designer", "ahmedshanzlezeh@outlook.com"));
         items.add(new Item(R.drawable.mostafa, "Mostafa", "web developer", "mostafahasieb13@yahoo.com"));
