@@ -3,9 +3,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:paddingTop="20dp"
     android:paddingBottom="20dp"
-    android:background="#FDB61D"
+    android:background="@drawable/ic_header"
     android:layout_width="match_parent"
-    android:layout_height="190dp"
+    android:layout_height="180dp"
     android:orientation="vertical">
 
     <com.pkmmte.view.CircularImageView
@@ -19,11 +19,11 @@
         app:shadow="true" />
 
     <TextView
+        android:paddingTop="15dp"
         android:id="@+id/tv_email"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:textColor="#000000"
-
         android:textSize="18sp" />
 </LinearLayout>

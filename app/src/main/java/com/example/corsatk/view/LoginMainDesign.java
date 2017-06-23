@@ -1,6 +1,7 @@
 package com.example.corsatk.view;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.annotation.NonNull;
 import android.support.percent.PercentLayoutHelper;
 import android.support.percent.PercentRelativeLayout;
@@ -34,25 +35,28 @@ public class LoginMainDesign extends AppCompatActivity implements View.OnClickLi
     private Button btnRegister;
     private Button btnSignin;
     private FirebaseAuth.AuthStateListener authListener;
-    private EditText etdEmailLogIn,etdPasswordLogin ;
+    private EditText etdEmailLogIn, etdPasswordLogin, userNameInNav;
     private EditText inputEmail, inputPassword;
     private Button btnLogIn, btnSignUp, btnResetPassword;
     private FirebaseAuth auth;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_desgin);
-        tvSigninInvoker=(TextView) findViewById(R.id.tvSigninInvoker);
-        tvSignupInvoker=(TextView) findViewById(R.id.tvSignupInvoker);
-        btnSignin=(Button) findViewById(R.id.btnLogin);
+        tvSigninInvoker = (TextView) findViewById(R.id.tvSigninInvoker);
+        tvSignupInvoker = (TextView) findViewById(R.id.tvSignupInvoker);
+        btnSignin = (Button) findViewById(R.id.btnLogin);
         btnSignin.setOnClickListener(this);
-        btnRegister=(Button) findViewById(R.id.btnRegister);
+        btnRegister = (Button) findViewById(R.id.btnRegister);
         btnRegister.setOnClickListener(this);
-        llSignin=(LinearLayout) findViewById(R.id.llSignin);
-        llSignup=(LinearLayout) findViewById(R.id.llSignup);
+        llSignin = (LinearLayout) findViewById(R.id.llSignin);
+        llSignup = (LinearLayout) findViewById(R.id.llSignup);
         etdEmailLogIn = (EditText) findViewById(R.id.emailLogin);
-        etdPasswordLogin= (EditText) findViewById(R.id.password_login);
-        btnLogIn= (Button) findViewById(R.id.btnLogin);
+        etdPasswordLogin = (EditText) findViewById(R.id.password_login);
+        btnLogIn = (Button) findViewById(R.id.btnLogin);
+        //Store username in sharedPerfernces
+        userNameInNav = (EditText) findViewById(R.id.personalUsernameInNav);
 
         //////////////////////////
         auth = FirebaseAuth.getInstance();
@@ -87,12 +91,13 @@ public class LoginMainDesign extends AppCompatActivity implements View.OnClickLi
             @Override
             public void onClick(View view) {
                 onRegister();
-                Animation clockwise= AnimationUtils.loadAnimation(getApplicationContext(),R.anim.rotate_right_to_left);
-               btnRegister.startAnimation(clockwise);
+                Animation clockwise = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.rotate_right_to_left);
+                btnRegister.startAnimation(clockwise);
 
             }
         });
     }
+
     private void showSignupForm() {
         PercentRelativeLayout.LayoutParams paramsLogin = (PercentRelativeLayout.LayoutParams) llSignin.getLayoutParams();
         PercentLayoutHelper.PercentLayoutInfo infoLogin = paramsLogin.getPercentLayoutInfo();
@@ -104,9 +109,9 @@ public class LoginMainDesign extends AppCompatActivity implements View.OnClickLi
         llSignup.requestLayout();
         tvSignupInvoker.setVisibility(View.GONE);
         tvSigninInvoker.setVisibility(View.VISIBLE);
-        Animation translate= AnimationUtils.loadAnimation(getApplicationContext(),R.anim.translate_right_to_left);
+        Animation translate = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.translate_right_to_left);
         llSignup.startAnimation(translate);
-        Animation clockwise= AnimationUtils.loadAnimation(getApplicationContext(),R.anim.rotate_right_to_left);
+        Animation clockwise = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.rotate_right_to_left);
         btnRegister.startAnimation(clockwise);
 
     }
@@ -123,12 +128,12 @@ public class LoginMainDesign extends AppCompatActivity implements View.OnClickLi
         infoSignup.widthPercent = 0.15f;
         llSignup.requestLayout();
 
-        Animation translate= AnimationUtils.loadAnimation(getApplicationContext(),R.anim.translate_left_to_right);
+        Animation translate = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.translate_left_to_right);
         llSignin.startAnimation(translate);
 
         tvSignupInvoker.setVisibility(View.VISIBLE);
         tvSigninInvoker.setVisibility(View.GONE);
-        Animation clockwise= AnimationUtils.loadAnimation(getApplicationContext(),R.anim.rotate_left_to_right);
+        Animation clockwise = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.rotate_left_to_right);
         btnSignin.startAnimation(clockwise);
     }
 
@@ -138,12 +143,26 @@ public class LoginMainDesign extends AppCompatActivity implements View.OnClickLi
         switch (id) {
             case R.id.btnLogin:
                 onLogin();
-        }   }
+        }
+    }
 
     private void onRegister() {
 
         String email = inputEmail.getText().toString().trim();
         String password = inputPassword.getText().toString().trim();
+
+        //Store username in sharedPerfernces
+        String username = userNameInNav.getText().toString().trim();
+        if (TextUtils.isEmpty(username)) {
+            Toast.makeText(this, "Please Enter Your Name", Toast.LENGTH_SHORT).show();
+            return;
+        } else {
+            SharedPreferences sp = getSharedPreferences("StoreUserNameNav", MODE_PRIVATE);
+            SharedPreferences.Editor editor = sp.edit();
+            editor.putString("USER_NAME", username); //username the user has entered
+            editor.commit();
+
+        }
 
         if (TextUtils.isEmpty(email)) {
             Toast.makeText(getApplicationContext(), "Enter email address!", Toast.LENGTH_SHORT).show();
@@ -170,8 +189,7 @@ public class LoginMainDesign extends AppCompatActivity implements View.OnClickLi
 
                         if (task.isSuccessful()) {
                             Toast.makeText(LoginMainDesign.this, "Great You Created One", Toast.LENGTH_SHORT).show();
-                        }
-                        else
+                        } else
                             Toast.makeText(LoginMainDesign.this, "Try Again Please", Toast.LENGTH_SHORT).show();
                         // If sign in fails, display a message to the user. If sign in succeeds
                         // the auth state listener will be notified and logic to handle the
@@ -191,14 +209,13 @@ public class LoginMainDesign extends AppCompatActivity implements View.OnClickLi
     }
 
 
-    private void onLogin()
-    {
+    private void onLogin() {
         String email = etdEmailLogIn.getText().toString();
         final String password = etdPasswordLogin.getText().toString();
 
         if (TextUtils.isEmpty(email)) {
             Toast.makeText(getApplicationContext(), "Enter email address !", Toast.LENGTH_LONG).show();
-            return ;
+            return;
         }
         if (TextUtils.isEmpty(password)) {
             Toast.makeText(getApplicationContext(), "Enter password ! ", Toast.LENGTH_LONG).show();
@@ -231,6 +248,7 @@ public class LoginMainDesign extends AppCompatActivity implements View.OnClickLi
         });
 
     }
+
     @Override
     public void onStart() {
         super.onStart();

@@ -5,6 +5,8 @@ import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.support.design.widget.NavigationView;
 import android.support.v4.widget.DrawerLayout;
@@ -43,15 +45,16 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.squareup.picasso.Picasso;
 
+import java.io.File;
 import java.util.HashMap;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener
-        ,BaseSliderView.OnSliderClickListener, ViewPagerEx.OnPageChangeListener{
+        , BaseSliderView.OnSliderClickListener, ViewPagerEx.OnPageChangeListener {
 
-   //Saving Image Profile
+    //Saving Image Profile
     private StorageReference mstorage;
     private ProgressDialog mprogressDialog;
-    private static final int GALLERY_INTENT=2;
+    private static final int GALLERY_INTENT = 2;
     private FirebaseAuth auth;
     private static String PlayList_ID;
     private DrawerLayout drawerLayout;
@@ -63,8 +66,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private View header;
     private GridView gridView;
     SliderLayout sliderLayout;   //image slider
-    HashMap<String,String> Hash_file_maps ;  //image slider
-    private Uri selectedImageURI;
+    HashMap<String, String> Hash_file_maps;  //image slider
+    private Uri selectedImageURI ;
 
 
     @Override
@@ -72,21 +75,21 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         //Saving Image Profile
-        mstorage= FirebaseStorage.getInstance().getReference();
-        mprogressDialog=new ProgressDialog(this);
+        mstorage = FirebaseStorage.getInstance().getReference();
+        mprogressDialog = new ProgressDialog(this);
 
         auth = FirebaseAuth.getInstance();
 
         // to do image slider
         Hash_file_maps = new HashMap<String, String>();
-        sliderLayout = (SliderLayout)findViewById(R.id.slider);
+        sliderLayout = (SliderLayout) findViewById(R.id.slider);
         Hash_file_maps.put("Android ", "http://www.imagesfb.com/photo/img_1389112357_433.png");
         Hash_file_maps.put("C #", "https://traineralsafafeer.files.wordpress.com/2016/02/c-sharp-2.png");
         Hash_file_maps.put("C ++", "https://lh3.ggpht.com/flU87hPIiLSVJYzBclssr8I4xjn-Vr4e1AulB0Piy6HyRv0877E3DrmjBzRbBsYkHNu_=w300");
         Hash_file_maps.put("Java", "https://www.edx.org/sites/default/files/styles/course_video_banner/public/course/image/featured-card/java-course-318x210.jpg?itok=XUP4YmE1");
         Hash_file_maps.put("SQL ", "http://www.kdnuggets.com/wp-content/uploads/sql.jpg");
 
-        for(String name : Hash_file_maps.keySet()){
+        for (String name : Hash_file_maps.keySet()) {
 
             TextSliderView textSliderView = new TextSliderView(MainActivity.this);
             textSliderView
@@ -96,7 +99,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     .setOnSliderClickListener(this);
             textSliderView.bundle(new Bundle());
             textSliderView.getBundle()
-                    .putString("extra",name);
+                    .putString("extra", name);
             sliderLayout.addSlider(textSliderView);
         }
         sliderLayout.setPresetTransformer(SliderLayout.Transformer.Accordion);
@@ -110,6 +113,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setSupportActionBar(toolbar);
         initNavigationDrawer();
     }
+
     @Override
     // related to image slider
     protected void onStop() {
@@ -123,12 +127,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     // related to image slider
     public void onSliderClick(BaseSliderView slider) {
 
-        Toast.makeText(this,slider.getBundle().get("extra") + "",Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, slider.getBundle().get("extra") + "", Toast.LENGTH_SHORT).show();
     }
 
     @Override
     // related to image slider
-    public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {}
+    public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+    }
 
     @Override
     // related to image slider
@@ -139,9 +144,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     // related to image slider
-    public void onPageScrollStateChanged(int state) {}
-
-
+    public void onPageScrollStateChanged(int state) {
+    }
 
 
     public void initNavigationDrawer() {
@@ -160,7 +164,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         Intent intent = new Intent(MainActivity.this, ArabicCourses.class);
                         startActivity(intent);
 
-                     //   drawerLayout.closeDrawers();
+                        //   drawerLayout.closeDrawers();
                         break;
                     case R.id.englishCourses:
                         Toast.makeText(getApplicationContext(), "English Courses", Toast.LENGTH_SHORT).show();
@@ -170,7 +174,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         break;
                     case R.id.aboutUs:
                         Toast.makeText(getApplicationContext(), "about", Toast.LENGTH_SHORT).show();
-                        intent = new Intent(MainActivity.this,About.class);
+                        intent = new Intent(MainActivity.this, About.class);
                         startActivity(intent);
                         drawerLayout.closeDrawers();
                         break;
@@ -184,7 +188,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         //Toast.makeText(getApplicationContext(), "Please rate us", Toast.LENGTH_SHORT).show();
                         intent = new Intent(MainActivity.this, ShowHelp.class);
                         startActivity(intent);
-                       // drawerLayout.closeDrawers();
+                        // drawerLayout.closeDrawers();
                         break;
 //                    case R.id.ratetUs:
 //                        Toast.makeText(getApplicationContext(), "Please rate us", Toast.LENGTH_SHORT).show();
@@ -196,12 +200,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         Toast.makeText(getApplicationContext(), "Lets start chatting", Toast.LENGTH_SHORT).show();
                         intent = new Intent(MainActivity.this, ChattingNames.class);
                         startActivity(intent);
-                       // drawerLayout.closeDrawers();
+                        // drawerLayout.closeDrawers();
                         break;
                     case R.id.uploadVideos:
                         intent = new Intent(MainActivity.this, UploadVideos.class);
                         startActivity(intent);
-                       // drawerLayout.closeDrawers();
+                        // drawerLayout.closeDrawers();
                         break;
                     case R.id.logout:
                         AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
@@ -214,7 +218,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                                         signOut();
                                         Intent intent = new Intent(MainActivity.this, LoginMainDesign.class);
                                         startActivity(intent);
-                                    finish();
+                                        finish();
                                     }
                                 }
                         );
@@ -233,13 +237,19 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }
         });
         header = navigationView.getHeaderView(0);
-        TextView tv_email = (TextView) header.findViewById(R.id.tv_email);
 
+        //Save profile
         imgProfile = (ImageView) header.findViewById(R.id.image_profile);
-
-
         imgProfile.setOnClickListener(this);
-        tv_email.setText("Toni@gmail.com");
+        // Show username in Nav from SharePrefernces
+        TextView tv_email = (TextView) header.findViewById(R.id.tv_email);
+        SharedPreferences sp = getSharedPreferences("StoreUserNameNav", MODE_PRIVATE);
+        String username = sp.getString("USER_NAME", "Unknown");
+        tv_email.setText("Welcome To CATCH :) \n" + username.toUpperCase());
+
+
+
+
         drawerLayout = (DrawerLayout) findViewById(R.id.drawer);
 
         ActionBarDrawerToggle actionBarDrawerToggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.drawer_open, R.string.drawer_close) {
@@ -292,9 +302,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         }
     }
+
     public void signOut() {
         auth.signOut();
     }
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
