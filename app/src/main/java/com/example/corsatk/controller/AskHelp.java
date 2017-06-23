@@ -103,7 +103,7 @@ public class AskHelp extends AppCompatActivity {
 
         }else {
             mprogress.dismiss();
-            Toast.makeText(this, "Please Fill data ", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Please Fill Data ", Toast.LENGTH_SHORT).show();
         }
     }
 
