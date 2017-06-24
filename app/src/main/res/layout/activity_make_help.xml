@@ -8,6 +8,7 @@
     >
 
     <LinearLayout
+        android:background="@color/color_all_app"
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/activity_make_help"
         android:layout_width="match_parent"

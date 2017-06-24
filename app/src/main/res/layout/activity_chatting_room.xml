@@ -4,7 +4,7 @@
     android:id="@+id/activity_chatting_room"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-
+android:background="@color/color_all_app"
 android:orientation="vertical"
     tools:context="com.example.corsatk.view.ChattingRoom">
 
