@@ -245,7 +245,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         TextView tv_email = (TextView) header.findViewById(R.id.tv_email);
         SharedPreferences sp = getSharedPreferences("StoreUserNameNav", MODE_PRIVATE);
         String username = sp.getString("USER_NAME", "Unknown");
-        tv_email.setText("Welcome To CATCH :) \n" + username.toUpperCase());
+        tv_email.setText("Welcome To CATCH \n" + username.toUpperCase()+" ヅ");
 
 
 
