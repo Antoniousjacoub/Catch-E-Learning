@@ -37,7 +37,7 @@ public class posthelp {
         return email;
     }
 
-    public void setEmail(String phone) {
+    public void setEmail(String email) {
         this.email = email;
     }
 

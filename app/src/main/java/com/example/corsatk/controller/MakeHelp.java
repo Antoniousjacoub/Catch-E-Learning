@@ -24,7 +24,7 @@ import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
 public class MakeHelp extends AppCompatActivity {
-  private   EditText name,phone,problem;
+  private   EditText name,email,problem;
    private Button upload,share;
    private ImageView imageView;
     private StorageReference mstorage;
@@ -41,7 +41,7 @@ public class MakeHelp extends AppCompatActivity {
         mstorage= FirebaseStorage.getInstance().getReference();
         mdata= FirebaseDatabase.getInstance().getReference().child("help requests");
         name=(EditText)findViewById(R.id.edittextname);
-        phone=(EditText)findViewById(R.id.edittextphone);
+        email=(EditText)findViewById(R.id.edittextphone);
         problem=(EditText)findViewById(R.id.edittextproblem);
         upload=(Button) findViewById(R.id.upload);
         share=(Button) findViewById(R.id.share);
@@ -79,7 +79,7 @@ public class MakeHelp extends AppCompatActivity {
         mprogress.setMessage("Please Wait....");
         mprogress.show();
         final  String n = name.getText().toString().trim();
-        final String p = phone.getText().toString().trim();
+        final String p = email.getText().toString().trim();
         final String prob = problem.getText().toString().trim();
         if(  (!TextUtils.isEmpty(n) && !TextUtils.isEmpty(p)&& !TextUtils.isEmpty(prob)&&imageuri !=null)){
             final StorageReference fielpath=mstorage.child("Photos").child(imageuri.getLastPathSegment());
@@ -90,7 +90,7 @@ public class MakeHelp extends AppCompatActivity {
                     Uri downloadUrl = taskSnapshot.getDownloadUrl();
                     DatabaseReference post=mdata.push();
                     post.child("name").setValue(n);
-                    post.child("phone").setValue(p);
+                    post.child("email").setValue(p);
                     post.child("problem").setValue(prob);
                     post.child("image").setValue(downloadUrl.toString());
                     mprogress.dismiss();
