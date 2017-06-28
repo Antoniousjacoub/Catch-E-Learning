@@ -85,9 +85,9 @@ public class ShowHelp extends AppCompatActivity {
             TextView textView_name=(TextView)mview.findViewById(R.id.text_name);
             textView_name.setText(name);
         }
-        public void setEmail(String phone){
-            TextView textView_phone=(TextView)mview.findViewById(R.id.text_phone);
-            textView_phone.setText(phone);
+        public void setEmail(String email){
+            TextView textView_email=(TextView)mview.findViewById(R.id.text_phone);
+            textView_email.setText(email);
 
         }
         public void setProblem(String problem){
