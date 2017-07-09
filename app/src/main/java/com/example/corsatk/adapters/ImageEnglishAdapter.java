@@ -49,11 +49,8 @@ public class ImageEnglishAdapter extends BaseAdapter {
         rowView = inflater.inflate(R.layout.img_item_courses, null);
         holder.tv=(TextView) rowView.findViewById(R.id.grid_item_label);
         holder.img=(ImageView) rowView.findViewById(R.id.grid_item_image);
-
         holder.tv.setText(result[position]);
         holder.img.setImageResource(imageId[position]);
-
-
         return rowView;
     }
     public class Holder

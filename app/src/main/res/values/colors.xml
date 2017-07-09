@@ -13,5 +13,5 @@
     <color name="colorAccentTrans">#a0009688</color>
     <color name="colorBlackTrans">#a0000000</color>
     <color name="color_all_app">#bdc3c7</color>
-    <color name="color_toolbar">#8e44ad</color>
+    <color name="color_toolbar">#FF8000</color>
 </resources>

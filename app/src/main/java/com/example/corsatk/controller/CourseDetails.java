@@ -42,20 +42,21 @@ public class CourseDetails extends YouTubeBaseActivity implements YouTubePlayer.
         btn_share.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 shareIt();
+
             }
         });
 
-/** Initializing YouTube Player View **/
+        /** Initializing YouTube Player View **/
         YouTubePlayerView youTubePlayerView = (YouTubePlayerView) findViewById(R.id.youtube_player);
         youTubePlayerView.initialize(API_KEY, this);
     }
     private void shareIt() {
-//sharing implementation here
-        Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
-        sharingIntent.setType("text/plain");
-        sharingIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "AndroidSolved");
-        sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, "Now Learn Android with AndroidSolved clicke here to visit https://androidsolved.wordpress.com/ ");
-        startActivity(Intent.createChooser(sharingIntent, "Share via"));
+        //sharing implementation here
+        String ID_PlayList = getIntent().getExtras().getString("EXTRA_SESSION_ID");
+        Intent shareintent = new Intent(Intent.ACTION_SEND);
+        shareintent.setType("text/plain");
+        shareintent.putExtra(Intent.EXTRA_TEXT, "https://www.youtube.com/playlist?list="+ID_PlayList);
+        startActivity(Intent.createChooser(shareintent, "Share via"));
     }
 
     @Override

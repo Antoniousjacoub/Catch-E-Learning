@@ -65,8 +65,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private SharedPreferences myPrefs;
     private View header;
     private GridView gridView;
-    SliderLayout sliderLayout;   //image slider
-    HashMap<String, String> Hash_file_maps;  //image slider
+   private SliderLayout sliderLayout;   //image slider
+    private HashMap<String, String> Hash_file_maps;  //image slider
     private Uri selectedImageURI ;
 
 
@@ -88,6 +88,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Hash_file_maps.put("C ++", "https://lh3.ggpht.com/flU87hPIiLSVJYzBclssr8I4xjn-Vr4e1AulB0Piy6HyRv0877E3DrmjBzRbBsYkHNu_=w300");
         Hash_file_maps.put("Java", "https://www.edx.org/sites/default/files/styles/course_video_banner/public/course/image/featured-card/java-course-318x210.jpg?itok=XUP4YmE1");
         Hash_file_maps.put("SQL ", "http://www.kdnuggets.com/wp-content/uploads/sql.jpg");
+        Hash_file_maps.put("Kotlin","http://swiftsight.tech/content/images/2017/01/back-kotlin-android-1.jpg");
 
         for (String name : Hash_file_maps.keySet()) {
 
@@ -240,7 +241,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         //Save profile
         imgProfile = (ImageView) header.findViewById(R.id.image_profile);
-        imgProfile.setOnClickListener(this);
+
         // Show username in Nav from SharePrefernces
         TextView tv_email = (TextView) header.findViewById(R.id.tv_email);
         SharedPreferences sp = getSharedPreferences("StoreUserNameNav", MODE_PRIVATE);

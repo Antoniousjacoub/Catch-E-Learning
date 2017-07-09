@@ -56,12 +56,14 @@ public class About extends AppCompatActivity {
 
     private void initItemsData() {
         items = new ArrayList<>(6);
-        items.add(new Item(R.drawable.fahad, "DR.Fahad ", "Instructor", "01281214755"));
-        items.add(new Item(R.drawable.farid, "DR.Farid", "Instructor", " 01222435861"));
-        items.add(new Item(R.drawable.bola, "Bola", "android developer", "bolatalaat055@gmail.com "));
-        items.add(new Item(R.drawable.tony, "Antonious", "android developer", "AntoniousJacoub@gmail.coom"));
-        items.add(new Item(R.drawable.ahmed, "Ahmed", "graphic designer", "ahmedshanzlezeh@outlook.com"));
-        items.add(new Item(R.drawable.mostafa, "Mostafa", "web developer", "mostafahasieb13@yahoo.com"));
+        items.add(new Item(R.drawable.fahad, "DR.Fahad ", "Instructor", "01143777734"));
+        items.add(new Item(R.drawable.farid, "DR.Farid", "Instructor", " 01278815226"));
+        items.add(new Item(R.drawable.bola, "Bola", "Android Developer", "bolatalaat055@gmail.com "));
+        items.add(new Item(R.drawable.tony, "Antonious", "Android Developer", "AntoniousJacoub@gmail.coom"));
+        items.add(new Item(R.drawable.ahmed, "Ahmed", "Graphic Designer", "ahmedshanzlezeh@outlook.com"));
+        items.add(new Item(R.drawable.mostafa, "Mostafa", "Web Developer", "mostafahasieb13@yahoo.com"));
+        items.add(new Item(R.drawable.khalid, "khalid", "AR Developer", "khalidshaker@yahoo.com"));
+        items.add(new Item(R.drawable.alaa, "Alaa", "Web Developer", "khalidshaker@yahoo.com"));
     }
 
     @Override
@@ -97,9 +99,9 @@ public class About extends AppCompatActivity {
 
     private void switchIcon(MenuItem item) {
         if (gridLayoutManager.getSpanCount() == 3) {
-            item.setIcon(getResources().getDrawable(R.drawable.c_plus));
+            item.setIcon(getResources().getDrawable(R.drawable.cpp));
         } else {
-            item.setIcon(getResources().getDrawable(R.drawable.c_plus));
+            item.setIcon(getResources().getDrawable(R.drawable.cpp));
         }
     }
 }

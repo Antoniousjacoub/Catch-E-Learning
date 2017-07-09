@@ -156,7 +156,13 @@ public class LoginMainDesign extends AppCompatActivity implements View.OnClickLi
         if (TextUtils.isEmpty(username)) {
             Toast.makeText(this, "Please Enter Your Name", Toast.LENGTH_SHORT).show();
             return;
-        } else {
+        }
+         else if( username.length()>10){
+
+            Toast.makeText(this, "Please Enter Your Name With Short Length", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        else {
             SharedPreferences sp = getSharedPreferences("StoreUserNameNav", MODE_PRIVATE);
             SharedPreferences.Editor editor = sp.edit();
             editor.putString("USER_NAME", username); //username the user has entered
@@ -190,13 +196,14 @@ public class LoginMainDesign extends AppCompatActivity implements View.OnClickLi
                         if (task.isSuccessful()) {
                             Toast.makeText(LoginMainDesign.this, "Great You Created One", Toast.LENGTH_SHORT).show();
                         } else
-                            Toast.makeText(LoginMainDesign.this, "Try Again Please", Toast.LENGTH_SHORT).show();
+
                         // If sign in fails, display a message to the user. If sign in succeeds
                         // the auth state listener will be notified and logic to handle the
                         // signed in user can be handled in the listener.
                         if (!task.isSuccessful()) {
-                            Toast.makeText(LoginMainDesign.this, "Authentication failed." + task.getException(),
+                            Toast.makeText(LoginMainDesign.this, "Authentication failed." + task.getException().getMessage(),
                                     Toast.LENGTH_LONG).show();
+                            Toast.makeText(LoginMainDesign.this, "Try Again Please", Toast.LENGTH_SHORT).show();
                             //Log.d("tmmmmmmmmmm", "createUserWithEmail:onComplete:" + task.getException());
                         } else {
                             startActivity(new Intent(LoginMainDesign.this, MainActivity.class));

@@ -21,7 +21,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".controller.CourseDetails" />
+        <activity android:name=".controller.CourseDetails"
+            android:configChanges="orientation|screenLayout|screenSize"/>
         <activity android:name=".courses.ArabicCourses" />
         <activity android:name=".courses.EnglishCourses" />
         <activity android:name=".view.RateUs" />

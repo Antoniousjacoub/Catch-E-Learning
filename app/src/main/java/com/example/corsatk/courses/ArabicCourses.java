@@ -35,21 +35,23 @@ public class ArabicCourses extends AppCompatActivity {
             "AndroidAdvanced",
             "IOSBeginner",
             "IOSAdvanced",
-            "SQL"};
+            "SQL",
+            "Kotlin"};
     public static int [] mCourseImage={
             R.drawable.oop,
-            R.drawable.c_plus_plus,
+            R.drawable.cpp,
             R.drawable.c_sharp,
-            R.drawable.java_beginner,
-            R.drawable.java_advanced,
+            R.drawable.java_bgn,
+            R.drawable.java_adv,
             R.drawable.python,
             R.drawable.asp,
             R.drawable.php,
-            R.drawable.android_beginner,
-            R.drawable.android_advanced,
-            R.drawable.ios_beginner,
-            R.drawable.ios_advanced,
-            R.drawable.sql
+            R.drawable.and_bgn,
+            R.drawable.and_adn,
+            R.drawable.ios_bgn,
+            R.drawable.ios_adv,
+            R.drawable.sql,
+            R.drawable.kotlin
     };
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -165,6 +167,13 @@ public class ArabicCourses extends AppCompatActivity {
                         Intent intent12 = new Intent(getBaseContext(), CourseDetails.class);
                         intent12.putExtra("EXTRA_SESSION_ID", PlayList_ID);
                         startActivity(intent12);
+                        break;
+                    // Kotin
+                    case 13:
+                        PlayList_ID="PLs97GbUOC82kEg7WNUG5mw9eueXH0BegQ";
+                        Intent intent13 = new Intent(getBaseContext(), CourseDetails.class);
+                        intent13.putExtra("EXTRA_SESSION_ID", PlayList_ID);
+                        startActivity(intent13);
                         break;
 
                 }

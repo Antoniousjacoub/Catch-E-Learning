@@ -23,11 +23,11 @@
         android:layout_height="50dp"
         android:text="Share it"
         android:textSize="20sp"
-
+        android:layout_gravity="center"
         android:id="@+id/shareit"
         android:textColor="#ffffff"
-        android:background="#20b2aa"
-        android:typeface="serif"
+        android:background="#ff8000"
+
         android:layout_marginTop="20dp"
         />
 

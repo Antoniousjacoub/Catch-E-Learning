@@ -44,7 +44,7 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemViewHolder
             holder.layoutBig.setVisibility(View.GONE);
         }
 
-        Item item = mItems.get(position % 6);
+        Item item = mItems.get(position % 8);
         holder.titleSmall.setText(item.getTitle());
         holder.titleBig.setText(item.getTitle());
         holder.ivSmall.setImageResource(item.getImgResId());
@@ -55,7 +55,7 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemViewHolder
 
     @Override
     public int getItemCount() {
-        return 6;
+        return 8;
     }
 
     class ItemViewHolder extends RecyclerView.ViewHolder {

@@ -50,13 +50,13 @@ public class ImageAdapter extends BaseAdapter {
             String mCourses = mCourseContent[position];
 
             if (mCourses.equals("Android")) {
-                imageView.setImageResource(R.drawable.android);
+                imageView.setImageResource(R.drawable.and_adn);
             } else if (mCourses.equals("Python")) {
                 imageView.setImageResource(R.drawable.python);
             } else if (mCourses.equals("JavaAdvanced")) {
                 imageView.setImageResource(R.drawable.java_adv);
             } else  {
-                imageView.setImageResource(R.drawable.c_plus);
+                imageView.setImageResource(R.drawable.cpp);
             }
 
         } else {

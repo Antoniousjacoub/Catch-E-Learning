@@ -4,8 +4,8 @@
     android:id="@+id/activity_chatting_room"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-android:background="@color/color_all_app"
-android:orientation="vertical"
+    android:background="@color/color_all_app"
+    android:orientation="vertical"
     tools:context="com.example.corsatk.view.ChattingRoom">
 
     <include
@@ -26,35 +26,38 @@ android:orientation="vertical"
             android:orientation="vertical">
 
             <EditText
-                android:hint="Send Message"
                 android:id="@+id/msg_input"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                 />
+                android:hint="What's on your mind ?" />
+
 
             <Button
                 android:id="@+id/btn_send"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Send" />
+                android:layout_gravity="center"
+                android:text="Send"
+                android:background="#FF8000"/>
+
         </LinearLayout>
     </android.support.v7.widget.CardView>
 
 
-        <ScrollView
-            android:id="@+id/scrollView"
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <TextView
+            android:id="@+id/textView_chat_conversation"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-
-            <TextView
-                android:id="@+id/textView_chat_conversation"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:text="Test"
-                android:textSize="@dimen/nav_title_txtSize"
-                android:textAppearance="?android:attr/textAppearanceLarge" />
+            android:layout_height="match_parent"
+            android:paddingTop="10dp"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textSize="@dimen/nav_title_txtSize" />
         >
-        </ScrollView>
+    </ScrollView>
 
 </LinearLayout>

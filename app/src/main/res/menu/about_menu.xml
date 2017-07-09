@@ -5,5 +5,5 @@
         android:id="@+id/menu_switch_layout"
         android:title="switch"
         app:showAsAction="always"
-        android:icon="@drawable/c_plus"/>
+        android:icon="@drawable/cpp"/>
 </menu>
